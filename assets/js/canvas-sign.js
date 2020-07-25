@@ -11,6 +11,17 @@ var getMousePos = (canvas, evt) => {
 	};
 };
 
+var undoCanvas = (canvasId) => {
+	var can = document.getElementById(canvasId);
+	var ctx = can.getContext('2d');
+	ctx.undoTag();
+};
+var redoCanvas = (canvasId) => {
+	var can = document.getElementById(canvasId);
+	var ctx = can.getContext('2d');
+	ctx.redoTag();
+};
+
 var clearCanvas = (canvasId, backgroundImageUrl) => {
 	var can = document.getElementById(canvasId);
 	var ctx = can.getContext('2d');
@@ -40,6 +51,8 @@ var drawSignature = function (canvasId, ratio) {
 	let lineWidth = 0;
 	let isMousedown = false;
 	let points = [];
+     
+	UndoCanvas.enableUndo(context)
 
 	for (const ev of ['touchstart', 'mousedown']) {
 		canvas.addEventListener(ev, function (e) {
@@ -59,6 +72,7 @@ var drawSignature = function (canvasId, ratio) {
 			y = pos.y;
 
 			isMousedown = true;
+			context.putTag();
 
 			lineWidth = Math.log(pressure + 1) * ratio;
 			context.lineWidth = lineWidth; // pressure * 50;
@@ -152,6 +166,7 @@ var drawSignature = function (canvasId, ratio) {
 				const l = points.length - 1;
 				context.quadraticCurveTo(points[l].x, points[l].y, x, y);
 				context.stroke();
+				context.putTag();
 			}
 
 			points = [];
@@ -163,6 +178,26 @@ var drawSignature = function (canvasId, ratio) {
 drawSignature('canvasId', 10);
 drawSignature('canvasId2', 4);
 drawSignature('canvasId3', 5);
+
+document.getElementById('undo1').onclick = () => {
+	undoCanvas('canvasId');
+};
+document.getElementById('redo1').onclick = () => {
+	redoCanvas('canvasId');
+};
+document.getElementById('undo2').onclick = () => {
+	undoCanvas('canvasId2');
+};
+document.getElementById('redo2').onclick = () => {
+	redoCanvas('canvasId2');
+};
+document.getElementById('undo3').onclick = () => {
+	undoCanvas('canvasId3');
+};
+document.getElementById('redo3').onclick = () => {
+	redoCanvas('canvasId3');
+};
+
 
 document.getElementById('clear1').onclick = () => {
 	clearCanvas('canvasId', 'assets/img/draw01.png');

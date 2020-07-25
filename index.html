@@ -461,9 +461,11 @@
 														<div class="row">
 															<div class="col-sm-3 input-group mb-3"></div>
 															<div class="col-sm-3 input-group mb-3">
-																<button type="button" id="save1" class="btn btn-dark">Save</button>
+																<button type="button" id="undo1" class="btn btn-dark">Undo</button>
+																<button type="button" id="redo1" class="btn btn-dark">Redo</button>
 															</div>
 															<div class="col-sm-3 input-group mb-3">
+																<button type="button" id="save1" class="btn btn-dark">Save</button>
 																<button type="button" id="clear1" class="btn btn-dark">Clear</button>
 															</div>
 															<div class="col-sm-3 input-group mb-3"></div>
@@ -531,11 +533,17 @@
 															<div class="col-sm-3 input-group mb-3"></div>
 															<div class="col-sm-3 input-group mb-3"></div>
 															<div class="col-sm-3 input-group mb-3">
-																<button id="save2" type="button" class="btn btn-dark">
-																	Save
+																<button id="undo2" type="button" class="btn btn-dark">
+																	Undo
+																</button>
+																<button id="redo2" type="button" class="btn btn-dark">
+																	Redo
 																</button>
 															</div>
 															<div class="col-sm-3 input-group mb-3">
+																<button id="save2" type="button" class="btn btn-dark">
+																	Save
+																</button>
 																<button id="clear2" type="button" class="btn btn-dark">
 																	Clear
 																</button>
@@ -586,6 +594,8 @@
 															<div class="col-sm-6 input-group mb-6" style="display: block;">
 																<canvas id="canvasId3" width="151" height="205"></canvas>
 																<div style="display: block;">
+																	<button id="undo3" type="button" class="btn btn-dark"> Undo </button>
+																	<button id="redo3" type="button" class="btn btn-dark"> Redo </button>
 																	<button id="save3" type="button" class="btn btn-dark"> Save </button>
 																	<button id="clear3" type="button" class="btn btn-dark"> Clear </button>
 																</div>
@@ -631,6 +641,7 @@
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script src="assets/js/app.js"></script>
+	<script src="assets/js/undo-canvas.js"></script>
 	<script src="assets/js/canvas-sign.js"></script>
 
 	<script>
